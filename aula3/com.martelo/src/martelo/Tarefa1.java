@@ -1,3 +1,5 @@
+package martelo;
+
 public class Tarefa1 implements Runnable{
 
     private Martelo martelo;

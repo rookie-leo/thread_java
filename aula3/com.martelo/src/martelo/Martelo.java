@@ -1,3 +1,5 @@
+package martelo;
+
 public class Martelo {
 
     public void martela() {
@@ -5,7 +7,7 @@ public class Martelo {
 
         System.out.println(nome + " pedindo o martelo emprestado");
 
-        synchronized (this) { // Martelo está ocupado
+        synchronized (this) { // martelo.Martelo está ocupado
             System.out.println(nome + " pegou o martelo");
             System.out.println(nome + " está martelando");
 
@@ -16,7 +18,7 @@ public class Martelo {
             }
 
             System.out.println(nome + " terminou de martelar");
-        } // Martelo desocupado
+        } // martelo.Martelo desocupado
 
     }
 
@@ -25,7 +27,7 @@ public class Martelo {
 
         System.out.println(nome + " pedindo o martelo emprestado");
 
-        synchronized (this) { // Martelo está ocupado
+        synchronized (this) { // martelo.Martelo está ocupado
             System.out.println(nome + " pegou o martelo");
             System.out.println(nome + " está despregando um prego");
 
@@ -36,7 +38,7 @@ public class Martelo {
             }
 
             System.out.println(nome + " terminou de despregar");
-        } // Martelo desocupado
+        } // martelo.Martelo desocupado
     }
 
 }
