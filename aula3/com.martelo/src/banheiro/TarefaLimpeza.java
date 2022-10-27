@@ -9,6 +9,13 @@ public class TarefaLimpeza implements Runnable {
 
     @Override
     public void run() {
-        this.banheiro.limpaBanheiro();
+        while(true) {
+            this.banheiro.limpaBanheiro();
+            try {
+                Thread.sleep(15000);//limpando cada 15s
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

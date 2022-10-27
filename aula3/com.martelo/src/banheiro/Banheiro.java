@@ -13,20 +13,21 @@ public class Banheiro {
         synchronized (this) {
             System.out.println(nome + " entrando no banheiro");
 
+            while (estahSujo) {
+                esperaLaFora(nome);
+            }
+
             if (this.estahSujo) {
                 esperaLaFora(nome);
             }
 
             System.out.println(nome + " fazendo coisa rapida");
-            try {
-                Thread.sleep(8000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            esperaUmPouco(8000);
 
             System.out.println(nome + " dando descarga");
             System.out.println(nome + " lavando a mao");
             System.out.println(nome + " saindo do banheiro");
+            estahSujo = true;
         }
     }
 
@@ -39,21 +40,30 @@ public class Banheiro {
         synchronized (this) {
             System.out.println(nome + " entrando no banheiro");
 
+            while (estahSujo) {
+                esperaLaFora(nome);
+            }
+
             if (this.estahSujo) {
                 esperaLaFora(nome);
             }
 
             System.out.println(nome + " fazendo coisa demorada");
 
-            try {
-                Thread.sleep(15000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            esperaUmPouco(15000);
 
             System.out.println(nome + " dando descarga");
             System.out.println(nome + " lavando a mao");
             System.out.println(nome + " saindo do banheiro");
+            estahSujo = true;
+        }
+    }
+
+    private static void esperaUmPouco(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
@@ -85,11 +95,7 @@ public class Banheiro {
 
             estahSujo = false;
 
-            try {
-                Thread.sleep(15000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            esperaUmPouco(20000);
 
             System.out.println(nome + " saindo do banheiro");
             notifyAll();
